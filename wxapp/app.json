@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/hall/hall",
+    "pages/send/send",
+    "pages/user/user",
+    "pages/auth/auth"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#A1CAA0",
+    "navigationBarTitleText": "相左说说",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a1caa0",
+    "selectedColor": "#d98884",
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/index",
+      "iconPath": "images/tabars/index0.png",
+      "selectedIconPath": "./images/tabars/index1.png"
+    }, {
+      "text": "大厅",
+      "pagePath": "pages/hall/hall",
+      "iconPath": "./images/tabars/hall0.png",
+      "selectedIconPath": "./images/tabars/hall1.png"
+    }, {
+      "text": "发表",
+      "pagePath": "pages/send/send",
+      "iconPath": "./images/tabars/add0.png",
+      "selectedIconPath": "./images/tabars/add1.png"
+    },{
+      "text": "我的",
+      "pagePath": "pages/user/user",
+      "iconPath": "./images/tabars/user0.png",
+      "selectedIconPath": "./images/tabars/user1.png"
+    }]
+  },
+  "usingComponents": {
+    "van-icon": "./lib/vant/icon/index",
+    "van-popup": "./lib/vant/popup/index",
+    "van-overlay": "./lib/vant/overlay/index",
+    "van-row": "./lib/vant/row/index",
+    "van-col": "./lib/vant/col/index",
+    "van-image": "./lib/vant/image/index",
+    "van-divider": "./lib/vant/divider/index",  
+    "van-toast": "./lib/vant/toast/index",
+    "van-notify": "./lib/vant/notify/index"
+    
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

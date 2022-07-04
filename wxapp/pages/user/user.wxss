@@ -1,0 +1,39 @@
+/* pages/user/user.wxss */
+.top {
+  background-color: #A1CAA0;
+  height: 6rem;
+  display: inline-flex;
+  width: 100%;
+  padding-top: 2.5rem;
+}
+.van-image {
+  padding: .5rem 1rem;
+}
+.info {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.nickname {
+  font-weight: 600;
+  padding-bottom: .5rem;
+  color: #D98884;
+}
+.van-multi-ellipsis--l2 {
+  color: #eee;
+  font-size: .8rem;
+}
+.van-col {
+  text-align: center;
+}
+.talkinfo {
+  background-color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: block;
+  padding: 1rem 0;
+}
+.talkinfo text {
+  font-size: .8rem;
+  color: #555;
+}

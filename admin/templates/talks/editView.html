@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>说说修改</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/user.css">
+    <style>
+        body {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 40px;"></div>
+<form class="layui-form" action="" name="user" id="user">
+    <input type="hidden" name="id" id="id" value="{{ id }}">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:40px">说说</label>
+        <div class="layui-input-block" style="margin-left: 70px;margin-right: 30px;min-height: 36px;">
+            <textarea class="layui-input layui-unselect" name="description" id="description" style="min-height:100px">{{ data.description }}</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:40px">媒体</label>
+        <div class="layui-input-block" style="margin-left: 70px;margin-right: 30px;min-height: 36px;">
+            <textarea class="layui-input layui-unselect" name="mediaurl" id="mediaurl" style="min-height:90px">{{ data.mediaUrl }}</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:40px">标记</label>
+        <div class="layui-input-block" style="margin-left: 70px;margin-right: 30px;min-height: 36px;">
+            <input class="layui-input layui-unselect" name="label" id="label" value="{{ data.label}}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width:40px">状态</label>
+        <div class="layui-input-block" style="margin-left: 70px;margin-right: 30px;min-height: 36px;">
+            <select id="status" name="status">
+            {% if data.status == 0 %}
+            <option value="0" selected>草稿</option><option value="1">发布</option>
+            {% elif data.status == 1 %}
+            <option value="0">草稿</option><option value="1" selected>发布</option>
+            {% endif %}
+            </select>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <button class="layui-btn" style="margin-left:calc(100% - 95px)" lay-submit="" lay-filter="submit" id="submit">提交</button>
+    </div>
+</form>
+<script src="/static/layui.js"></script>
+<script src="/static/jquery-2.1.4.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form, layer = layui.layer;
+        //监听提交
+        form.on('submit(submit)', function (data) {
+            console.log(data.field);
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "/talks/edit",
+                data: data.field,
+                async: false,
+                error: function (request) {
+                    return false;
+                },
+                success: function (result) {
+                    console.log(result);
+                    layer.alert(result.errmsg, {icon: 6}, function () {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                        //刷新父页面数据
+                        parent.reloadData();
+                    });
+                },
+                complete: function () {
+                },
+                error: function (data) {
+                    layer.msg('修改失败，请重试！', {icon: 5});
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

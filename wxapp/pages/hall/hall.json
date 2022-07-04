@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-action-sheet": "../../lib/vant/action-sheet/index",
+    "van-empty": "../../lib/vant/empty/index",
+    "van-dialog": "../../lib/vant/dialog/index",
+    "van-tag": "../../lib/vant/tag/index"
+  },
+  "enablePullDownRefresh":true
+}

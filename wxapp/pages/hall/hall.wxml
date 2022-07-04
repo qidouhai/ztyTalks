@@ -1,0 +1,98 @@
+<view wx:if="{{ empty }}" style="top: {{ systemInfo.screenHeight / 8 }}px;position: relative;">
+  <van-empty
+    class="custom-image"
+    image="search"
+    description="这里空荡荡的"
+  >
+  </van-empty>
+</view>
+
+<view wx:for="{{talksList}}" wx:for-index="index" wx:key="talk" wx:for-item="talk">
+  <view class="talk-block {{ editId == talk.id && show ? 'editstyle' : '' }}" bindlongpress="copy" data-copytext="{{talk.description}}">
+    <view class="card-head">
+
+      <view class="top">
+        <view class="avatar">
+          <van-image
+          round
+          width="2rem"
+          height="2rem"
+          src="{{ userInfo.avatarUrl }}"
+          />
+        </view>
+        <view class="info">
+          <view class="nickname {{ talk.openid==userInfo.openid ? 'my' : ''}}">{{ talk.username }}</view>
+         <text class="time">{{ talk.publishDate }}</text>
+        </view>
+      </view>
+      <van-icon wx:if="{{ talk.openid == userInfo.openid }}" bindtap="action" name="ellipsis" data-talkid="{{ talk.id }}" style="float: right;" data-talkInfo="{{ talk }}"/>
+    </view>
+    <view wx:if="{{ talk.description }}">
+      <rich-text nodes='{{ talk.talkHtml }}' />
+    </view>
+    <view class="media-block" wx:if="{{ talk.mediaUrl != 0 }}" >
+      <van-row gutter="5">
+        <van-col span="8" class="media-play" wx:for="{{ talk.mediaUrl }}" wx:for-index="index" wx:key="index" wx:for-item="item">
+          <van-image
+            wx:if="{{ item.filetype == 'image' }}"
+            fit="cover"
+            center
+            lazy-load
+            width="100" 
+            height="{{ systemInfo.screenWidth / 3 *0.75 }}" 
+            use-error-slot
+            use-loading-slot
+            bind:click="mediaPlay"
+            data-medialist="{{ talk.mediaUrl }}"
+            data-date="{{ talk.date }}"
+            data-index="{{ index }}"
+            data-currentUrl="{{ qiniuDomain }}/talks/{{ userInfo.openid }}/{{ talk.date }}/{{ item.filename }}"
+            src="{{ qiniuDomain }}/talks/{{ talk.openid }}/{{ talk.date }}/{{ item.filename }}?imageView2/0/q/30" 
+          >
+            <van-loading slot="loading" type="spinner" size="20" vertical color="#a1caa05f">加载中...</van-loading>
+            <text slot="error">加载失败</text>
+          </van-image>
+          <view class="video-box" wx:if="{{ item.filetype == 'video' }}">
+            <van-icon class="play-icon" 
+              name="play-circle-o" 
+              color="#fff" 
+              size="30px"
+              bindtap="mediaPlay"
+              data-medialist="{{ talk.mediaUrl }}"
+              data-date="{{ talk.date }}"
+              data-index="{{ index }}"
+              data-currentUrl="{{ qiniuDomain }}/talks/{{ userInfo.openid }}/{{ talk.date }}/{{ item.filename }}"
+              />
+            <video
+              class="video"
+              controls="{{false}}"
+              show-play-btn="{{false}}"
+              show-fullscreen-btn="{{false}}"
+              show-center-play-btn="{{false}}"
+              bindtap="mediaPlay"
+              data-medialist="{{ talk.mediaUrl }}"
+              data-date="{{ talk.date }}"
+              data-index="{{ index }}"
+              data-currentUrl="{{ qiniuDomain }}/talks/{{ userInfo.openid }}/{{ talk.date }}/{{ item.filename }}"
+              src="{{ qiniuDomain }}/talks/{{ talk.openid }}/{{ talk.date }}/{{ item.filename }}"
+              style="height: {{ systemInfo.screenWidth / 3 *0.75 }}px;"
+            ></video>
+          </view>
+        </van-col>
+      </van-row>
+    </view>
+    <view class="card-bottom">
+      <van-tag color="#efcd8d">{{ talk.label }}</van-tag>
+    </view>
+  </view>
+</view>
+
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions }}"
+  bind:close="onClose"
+  bind:select="onSelect"
+/>
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />

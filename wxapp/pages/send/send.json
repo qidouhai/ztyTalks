@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "发表说说",
+  "usingComponents": {
+    "van-field": "../../lib/vant/field/index",
+    "van-uploader": "../../lib/vant/uploader/index",
+    "van-radio": "../../lib/vant/radio/index",
+    "van-radio-group": "../../lib/vant/radio-group/index",
+    "van-cell": "../../lib/vant/cell/index",
+    "van-cell-group": "../../lib/vant/cell-group/index",
+    "van-dialog": "../../lib/vant/dialog/index"
+  }
+}

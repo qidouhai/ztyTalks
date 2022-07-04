@@ -1,0 +1,25 @@
+/* pages/send/send.wxss */
+n-uploader__upload {
+  background-color: rgb(253, 253, 253)!important;
+}
+.van-uploader{
+  padding: .5rem;
+}
+
+.van-doc-demo-block__title {
+  margin: 0;
+  padding: .5rem 1rem;
+  color: rgba(69,90,100,.6);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  display: block
+}
+
+.sendbtn {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}

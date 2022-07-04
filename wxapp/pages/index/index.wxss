@@ -1,0 +1,63 @@
+/* pages/index/index.wxss */
+
+.talk-block {
+  padding: .5rem;
+  margin: .5rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.time {
+  font-size: 10px;
+  color: #666;
+  padding: .2rem 0;
+}
+.talks {
+  font-size: .9rem;
+}
+.p {
+  padding: .5rem 0;
+  line-height: 1.5rem;
+  color: #3e4246;
+  display: inline-block;
+}
+.label {
+  padding: 2px 5px;
+  font-size: .8rem;
+  border-radius: 5px;
+  color: #4cb7de;
+  background-color: #28adde1a;
+}
+.media-block {
+  margin: .5rem 0;
+}
+.editstyle {
+  border: 2px dashed #d98884;
+  background-color: #f3e5d857;
+}
+.van-image {
+  width: 100%!important;
+  width: 100%!important;
+}
+van-image {
+  display: block;
+  width: 100%;
+}
+.video {
+  display: block;
+  width: 100%;
+}
+.video-box {
+  position: relative;
+}
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  transform: translate(-50%,-50%);
+}
+.bottom-button {
+  width: 200px;
+  background-color: #A1CAA0;
+  color: #fff;
+}

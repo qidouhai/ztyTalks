@@ -1,0 +1,39 @@
+<!--pages/user/user.wxml-->
+
+<view class="top">
+  <view class="avatar">
+    <van-image
+    round
+    width="5rem"
+    height="5rem"
+    src="{{ avatarUrl }}"
+    />
+    
+  </view>
+  <view class="info">
+    <view class="vcenter">
+      <view class="nickname">{{ info.nickName }}</view>
+      <text class="van-multi-ellipsis--l2">心有山海，静而不争</text>
+    </view>
+  </view>
+</view>
+<van-row gutter="20" class="talkinfo">
+  <van-col span="8">
+    <view style="color: #EFCD8D;">{{ info.talk_count }}</view>
+    <text>说说</text>
+  </van-col>
+  <van-col span="8">
+    <view style="color: #D98884;">{{ info.days }}</view>
+    <text>DAYS</text>
+  </van-col>
+  <van-col span="8">
+    <view style="color: #A1CAA0;">{{ info.label_count }}</view>
+    <text>标签</text>
+  </van-col>
+</van-row>
+<van-divider dashed />
+
+<van-cell title="个人中心" icon="user-o" />
+<van-cell title="清除缓存" icon="replay" bindtap="cleanStorge"/>
+<van-cell title="联系作者" icon="phone-o" />
+<van-cell title="关于" icon="location-o" />
